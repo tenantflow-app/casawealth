@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CasaWealth — Real Estate &amp; Property Specialists</title>
-  <meta name="description" content="CasaWealth is Queensland's premier real estate and property specialist company. Strategic investment, asset management, and PropTech solutions.">
-  <meta property="og:title" content="CasaWealth — Real Estate &amp; Property Specialists">
-  <meta property="og:description" content="Strategic real estate expertise meets cutting-edge technology. Discover CasaFlow — our AI-powered property management platform.">
+  <title>CasaWealth — Queensland Property Specialists</title>
+  <meta name="description" content="CasaWealth delivers full-service real estate and property management across Queensland — from leasing and sales to technology and investment.">
+  <meta property="og:title" content="CasaWealth — Queensland Property Specialists">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -14,39 +13,49 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --navy:     #05081A;
-      --navy2:    #080D28;
-      --navy3:    #0B1340;
-      --gold:     #C9A84C;
-      --gold-lt:  #E8C96A;
-      --gold-dk:  #9A7A2F;
-      --white:    #F0F4FF;
-      --muted:    #8892A4;
+      --cream:    #FAFAF7;
+      --warm:     #F4F0E8;
+      --gold:     #B8922A;
+      --gold-lt:  #D4A94A;
+      --gold-dk:  #8A6A1A;
+      --navy:     #0F1629;
+      --navy2:    #1A2340;
+      --charcoal: #2C2C2C;
+      --mid:      #6B7280;
+      --light:    #9CA3AF;
       --cyan:     #0891b2;
+      --cyan-lt:  #E0F2FE;
       --purple:   #6355E8;
-      --card-bg:  rgba(11,19,64,0.6);
-      --glass:    rgba(255,255,255,0.04);
+      --purple-lt:#EDE9FE;
+      --green:    #059669;
+      --green-lt: #D1FAE5;
+      --rose:     #DC2626;
+      --rose-lt:  #FEE2E2;
+      --amber:    #D97706;
+      --amber-lt: #FEF3C7;
+      --card-bg:  #FFFFFF;
+      --border:   rgba(0,0,0,0.08);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--white);
+      background: var(--cream);
+      color: var(--charcoal);
       overflow-x: hidden;
     }
 
-    /* ─── CANVAS HERO ─────────────────────────────── */
+    /* ─── CANVAS ───────────────────────────────────── */
     #hero-canvas {
-      position: fixed;
+      position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: 0;
       pointer-events: none;
     }
 
-    /* ─── NAV ─────────────────────────────────────── */
+    /* ─── NAV ──────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -56,12 +65,12 @@
       justify-content: space-between;
       padding: 0 60px;
       height: 72px;
-      transition: background 0.4s, backdrop-filter 0.4s;
+      transition: background 0.4s, box-shadow 0.4s;
     }
     nav.scrolled {
-      background: rgba(5,8,26,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
+      background: rgba(250,250,247,0.92);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
     }
     .nav-logo {
       display: flex;
@@ -70,57 +79,47 @@
       text-decoration: none;
     }
     .nav-logo-mark {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dk));
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold-dk));
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 18px;
-      color: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px;
+      color: white;
       letter-spacing: -1px;
       flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(184,146,42,0.35);
     }
     .nav-logo-text {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--white);
+      font-size: 18px; font-weight: 700;
+      color: var(--navy);
       letter-spacing: -0.3px;
     }
     .nav-logo-text span { color: var(--gold); }
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
+      display: flex; align-items: center;
+      gap: 36px; list-style: none;
     }
     .nav-links a {
-      color: var(--muted);
+      color: var(--mid);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 14px; font-weight: 500;
       transition: color 0.2s;
-      letter-spacing: 0.2px;
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--charcoal); }
     .nav-cta {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dk));
-      color: var(--navy) !important;
+      background: var(--navy) !important;
+      color: white !important;
       padding: 10px 22px;
       border-radius: 24px;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       font-size: 13px !important;
-      letter-spacing: 0.3px;
-      transition: opacity 0.2s, transform 0.2s !important;
+      transition: background 0.2s, transform 0.2s !important;
     }
-    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); color: var(--navy) !important; }
+    .nav-cta:hover { background: var(--navy2) !important; transform: translateY(-1px); color: white !important; }
 
     /* ─── HERO ─────────────────────────────────────── */
     #hero {
       position: relative;
-      z-index: 1;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -128,21 +127,24 @@
       justify-content: center;
       text-align: center;
       padding: 0 24px;
+      background: linear-gradient(160deg, #E8EEF8 0%, #F4F0E8 40%, #FAFAF7 100%);
+      overflow: hidden;
     }
+    .hero-content { position: relative; z-index: 2; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(201,168,76,0.12);
-      border: 1px solid rgba(201,168,76,0.25);
+      background: white;
+      border: 1px solid rgba(184,146,42,0.3);
       border-radius: 24px;
       padding: 7px 18px;
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 12px; font-weight: 600;
       color: var(--gold);
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(184,146,42,0.12);
       opacity: 0;
       animation: fadeUp 0.8s 0.3s forwards;
     }
@@ -154,1221 +156,780 @@
       animation: pulse 2s infinite;
     }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
     h1.hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 8vw, 96px);
+      font-size: clamp(48px, 8vw, 88px);
       font-weight: 900;
       line-height: 1.0;
       letter-spacing: -2px;
-      color: var(--white);
+      color: var(--navy);
       margin-bottom: 24px;
       opacity: 0;
       animation: fadeUp 0.8s 0.5s forwards;
     }
     h1.hero-title .gold { color: var(--gold); }
-    h1.hero-title .line2 { display: block; }
     .hero-sub {
       font-size: 18px;
-      color: var(--muted);
-      max-width: 520px;
+      color: var(--mid);
+      max-width: 540px;
       line-height: 1.7;
-      margin-bottom: 44px;
+      margin: 0 auto 44px;
       opacity: 0;
       animation: fadeUp 0.8s 0.7s forwards;
     }
     .hero-btns {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: flex; gap: 14px;
+      justify-content: center; flex-wrap: wrap;
       opacity: 0;
       animation: fadeUp 0.8s 0.9s forwards;
     }
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dk));
-      color: var(--navy);
+    .btn-primary {
+      background: var(--navy);
+      color: white;
       padding: 16px 36px;
       border-radius: 50px;
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 15px; font-weight: 700;
       text-decoration: none;
-      border: none;
-      cursor: pointer;
+      border: none; cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+      box-shadow: 0 8px 24px rgba(15,22,41,0.25);
     }
-    .btn-gold:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(201,168,76,0.4);
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(15,22,41,0.3); }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold-dk));
+      color: white;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 15px; font-weight: 700;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(184,146,42,0.3);
     }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(184,146,42,0.4); }
     .btn-outline {
-      background: transparent;
-      color: var(--white);
+      background: white;
+      color: var(--charcoal);
       padding: 15px 36px;
       border-radius: 50px;
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 15px; font-weight: 600;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid var(--border);
       cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-    .btn-outline:hover {
-      border-color: rgba(201,168,76,0.5);
-      background: rgba(201,168,76,0.07);
-      transform: translateY(-3px);
-    }
+    .btn-outline:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+
     .hero-scroll {
       position: absolute;
-      bottom: 36px;
-      left: 50%;
+      bottom: 36px; left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
       opacity: 0;
       animation: fadeIn 1s 1.5s forwards;
+      z-index: 2;
     }
-    .hero-scroll span {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+    .hero-scroll span { font-size: 11px; color: var(--light); letter-spacing: 2px; text-transform: uppercase; }
     .scroll-line {
-      width: 1px;
-      height: 40px;
+      width: 1px; height: 40px;
       background: linear-gradient(to bottom, var(--gold), transparent);
       animation: scrollLine 1.5s ease-in-out infinite;
     }
     @keyframes scrollLine { 0%{opacity:1;transform:scaleY(1)} 100%{opacity:0;transform:scaleY(0.3) translateY(20px)} }
-
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
     /* ─── SECTIONS ─────────────────────────────────── */
-    section {
-      position: relative;
-      z-index: 2;
-    }
-
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
+    section { position: relative; z-index: 2; }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
     .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
     }
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 5vw, 58px);
+      font-size: clamp(34px, 5vw, 54px);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -1px;
-      color: var(--white);
-      margin-bottom: 20px;
+      color: var(--navy);
+      margin-bottom: 18px;
     }
     .section-sub {
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 560px;
+      font-size: 16px; color: var(--mid);
+      line-height: 1.8; max-width: 560px;
     }
 
-    /* ─── STATS BAR ──────────────────────────────────*/
+    /* ─── STATS BAR ─────────────────────────────────── */
     #stats {
-      background: rgba(8,13,40,0.95);
-      border-top: 1px solid rgba(201,168,76,0.1);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-      padding: 48px 40px;
+      background: var(--navy);
+      padding: 52px 40px;
     }
     .stats-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr);
       gap: 20px;
     }
     .stat-item {
-      text-align: center;
-      padding: 20px;
+      text-align: center; padding: 20px;
       position: relative;
     }
     .stat-item:not(:last-child)::after {
       content: '';
-      position: absolute;
-      right: 0;
-      top: 20%;
-      height: 60%;
-      width: 1px;
-      background: rgba(201,168,76,0.15);
+      position: absolute; right: 0; top: 20%;
+      height: 60%; width: 1px;
+      background: rgba(255,255,255,0.1);
     }
     .stat-num {
-      font-size: 52px;
-      font-weight: 800;
-      color: var(--gold);
-      line-height: 1;
+      font-size: 52px; font-weight: 800;
+      color: var(--gold-lt); line-height: 1;
       letter-spacing: -2px;
-      font-variant-numeric: tabular-nums;
     }
     .stat-suf { font-size: 28px; }
-    .stat-label {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 8px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 8px; font-weight: 500; }
 
-    /* ─── ABOUT ──────────────────────────────────────*/
-    #about {
-      padding: 120px 40px;
-    }
+    /* ─── ABOUT ─────────────────────────────────────── */
+    #about { padding: 120px 40px; background: white; }
     .about-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
     }
-    .about-visual {
-      position: relative;
-      height: 460px;
-    }
+    .about-visual { position: relative; height: 460px; }
     .about-card-3d {
       position: absolute;
-      background: var(--card-bg);
-      border: 1px solid rgba(201,168,76,0.15);
+      background: white;
+      border: 1px solid var(--border);
       border-radius: 20px;
       padding: 28px;
-      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
     }
     .about-card-3d.main {
-      width: 320px;
-      top: 40px;
-      left: 0;
+      width: 320px; top: 40px; left: 0;
       transform: perspective(800px) rotateY(8deg) rotateX(-3deg);
-      box-shadow: 20px 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
     }
     .about-card-3d.accent {
-      width: 220px;
-      bottom: 40px;
-      right: 0;
+      width: 220px; bottom: 40px; right: 0;
       transform: perspective(800px) rotateY(-6deg) rotateX(4deg);
-      box-shadow: -10px 20px 60px rgba(0,0,0,0.5);
-      border-color: rgba(8,145,178,0.25);
+      border-color: rgba(8,145,178,0.2);
+      background: var(--cyan-lt);
     }
     .card-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dk));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 16px;
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold-dk));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
     }
     .card-icon.blue { background: linear-gradient(135deg, var(--cyan), var(--purple)); }
-    .about-card-3d h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .about-card-3d p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .card-metric {
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--gold);
-      margin-top: 16px;
-      letter-spacing: -1px;
-    }
+    .about-card-3d h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .about-card-3d p { font-size: 13px; color: var(--mid); line-height: 1.6; }
+    .card-metric { font-size: 36px; font-weight: 800; color: var(--gold); margin-top: 16px; letter-spacing: -1px; }
     .card-metric.blue-text { color: var(--cyan); }
-    .about-content .section-sub { max-width: 100%; }
-    .about-pillars {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 36px;
+    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .pill {
+      background: var(--amber-lt); color: var(--amber);
+      font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px;
     }
-    .pillar {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
+    .about-text .section-sub { margin-bottom: 36px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; color: var(--charcoal); line-height: 1.5;
     }
-    .pillar-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-      margin-top: 6px;
-      flex-shrink: 0;
-    }
-    .pillar-dot.blue { background: var(--cyan); }
-    .pillar h5 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .pillar p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
+    .check-list li::before {
+      content: '✓';
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--green-lt); color: var(--green);
+      font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
     }
 
-    /* ─── SERVICES ───────────────────────────────────*/
-    #services {
-      padding: 120px 40px;
-      background: linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
-    }
-    .services-header {
-      max-width: 1200px;
-      margin: 0 auto 64px;
-    }
+    /* ─── SERVICES ──────────────────────────────────── */
+    #services { padding: 120px 40px; background: var(--warm); }
+    .services-header { text-align: center; margin-bottom: 64px; }
+    .services-header .section-sub { margin: 0 auto; }
     .services-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3,1fr);
       gap: 24px;
     }
     .service-card {
-      background: var(--glass);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 24px;
-      padding: 40px 32px;
+      background: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
       position: relative;
       overflow: hidden;
-      cursor: default;
-      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-                  border-color 0.3s,
-                  box-shadow 0.4s;
-      transform-style: preserve-3d;
     }
     .service-card::before {
       content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent-color, var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
     }
-    .service-card:hover {
-      transform: perspective(800px) rotateX(-4deg) rotateY(3deg) translateY(-8px);
-      border-color: rgba(201,168,76,0.25);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-card:nth-child(2):hover {
-      transform: perspective(800px) rotateX(-4deg) rotateY(0deg) translateY(-8px);
-    }
-    .service-card:nth-child(3):hover {
-      transform: perspective(800px) rotateX(-4deg) rotateY(-3deg) translateY(-8px);
-    }
-    .service-glow {
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 160px; height: 160px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 70%);
-    }
-    .service-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--gold);
-      margin-bottom: 24px;
-    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0,0,0,0.12); }
+    .service-card:hover::before { transform: scaleX(1); }
     .service-icon {
-      font-size: 36px;
-      margin-bottom: 20px;
-      display: block;
+      width: 56px; height: 56px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 20px;
     }
-    .service-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .service-card p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
+    .service-card h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 20px; }
+    .service-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600;
+      padding: 5px 12px; border-radius: 20px;
     }
     .service-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gold);
-      text-decoration: none;
-      margin-top: 24px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600;
+      color: var(--cyan); text-decoration: none;
+      margin-top: 4px;
       transition: gap 0.2s;
     }
     .service-link:hover { gap: 10px; }
 
-    /* ─── CASAFLOW FEATURE ────────────────────────── */
+    /* ─── CASAFLOW FEATURE STRIP ────────────────────── */
     #casaflow {
-      padding: 120px 40px;
+      padding: 100px 40px;
+      background: var(--navy);
       position: relative;
       overflow: hidden;
     }
     #casaflow::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(99,85,232,0.12), transparent 70%);
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,85,232,0.15) 0%, transparent 70%);
       pointer-events: none;
     }
-    .casaflow-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+    .casaflow-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
     }
-    .casaflow-top {
-      text-align: center;
-      margin-bottom: 72px;
+    .casaflow-text .section-label { color: var(--gold-lt); }
+    .casaflow-text .section-title { color: white; }
+    .casaflow-text .section-sub { color: rgba(255,255,255,0.55); margin-bottom: 36px; }
+    .feature-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .chip {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.75);
+      font-size: 12px; font-weight: 500;
+      padding: 7px 14px; border-radius: 20px;
     }
-    .casaflow-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, rgba(8,145,178,0.15), rgba(99,85,232,0.15));
-      border: 1px solid rgba(99,85,232,0.3);
-      border-radius: 50px;
-      padding: 8px 20px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+    .casaflow-visual {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
     }
-    .casaflow-badge .cf-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-    }
-    .casaflow-badge span { background: linear-gradient(135deg, var(--cyan), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .casaflow-main-card {
-      background: linear-gradient(135deg, rgba(8,13,40,0.95), rgba(11,19,64,0.95));
-      border: 1px solid rgba(99,85,232,0.25);
-      border-radius: 32px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 40px 120px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
-    }
-    .casaflow-main-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
-    }
-    .casaflow-card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .casaflow-left {
-      padding: 64px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .cf-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 32px;
+    .cf-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px; padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .cf-logo-mark {
-      width: 52px; height: 52px;
+      width: 36px; height: 36px; border-radius: 10px;
       background: linear-gradient(135deg, var(--cyan), var(--purple));
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 900;
-      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 14px; color: white;
     }
-    .cf-logo-name {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.5px;
+    .cf-header h4 { font-size: 16px; font-weight: 700; color: white; }
+    .cf-header span { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .cf-modules { display: flex; flex-direction: column; gap: 12px; }
+    .cf-module {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px; padding: 14px 16px;
     }
-    .cf-logo-name span {
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .cf-module-left { display: flex; align-items: center; gap: 12px; }
+    .cf-module-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .cf-module-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
+    .cf-module-stat { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .cf-badge {
+      font-size: 10px; font-weight: 700;
+      padding: 3px 9px; border-radius: 20px;
+      letter-spacing: 0.5px; text-transform: uppercase;
     }
-    .casaflow-left h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-    }
-    .casaflow-left p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 36px;
-    }
-    .cf-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 40px;
-    }
-    .cf-features li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--white);
-      font-weight: 500;
-    }
-    .cf-check {
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      flex-shrink: 0;
-    }
-    .btn-casaflow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      color: white;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 32px rgba(99,85,232,0.4);
-      width: fit-content;
-    }
-    .btn-casaflow:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(99,85,232,0.5);
-    }
-    .casaflow-right {
-      background: linear-gradient(135deg, rgba(8,145,178,0.06), rgba(99,85,232,0.1));
-      border-left: 1px solid rgba(99,85,232,0.2);
-      padding: 64px 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .cf-feature-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      padding: 24px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .cf-feature-card:hover {
-      border-color: rgba(8,145,178,0.3);
-      transform: translateX(4px);
-    }
-    .cf-feature-card h4 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cf-feature-card h4 .icon { font-size: 18px; }
-    .cf-feature-card p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .cf-stat-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 4px;
-    }
-    .cf-stat {
-      background: rgba(8,145,178,0.1);
-      border: 1px solid rgba(8,145,178,0.2);
-      border-radius: 12px;
-      padding: 16px;
-      text-align: center;
-    }
-    .cf-stat .num {
-      font-size: 28px;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -1px;
-    }
-    .cf-stat .lbl {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-      font-weight: 500;
-    }
+    .cf-badge.live { background: rgba(5,150,105,0.2); color: #34D399; }
+    .cf-badge.beta { background: rgba(8,145,178,0.2); color: #38BDF8; }
+    .cf-badge.soon { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.35); }
 
-    /* ─── CTA BAND ───────────────────────────────────*/
+    /* ─── CTA ───────────────────────────────────────── */
     #cta {
-      padding: 100px 40px;
-      background: linear-gradient(135deg, var(--navy2), var(--navy3));
-      border-top: 1px solid rgba(201,168,76,0.1);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
+      padding: 120px 40px;
+      background: linear-gradient(135deg, var(--warm) 0%, white 100%);
       text-align: center;
     }
-    #cta .section-title { margin-bottom: 16px; }
-    #cta .section-sub { margin: 0 auto 40px; text-align: center; }
-    .cta-btns {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    #cta .section-title { margin: 0 auto 20px; max-width: 700px; }
+    #cta .section-sub { margin: 0 auto 44px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-    /* ─── FOOTER ─────────────────────────────────────*/
+    /* ─── FOOTER ─────────────────────────────────────── */
     footer {
-      background: #030614;
-      padding: 60px 40px 36px;
-      border-top: 1px solid rgba(255,255,255,0.04);
+      background: var(--navy);
+      padding: 60px 40px 40px;
+      color: rgba(255,255,255,0.5);
     }
     .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 48px;
     }
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      margin-bottom: 32px;
-    }
-    .footer-brand p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 280px;
-      margin-top: 12px;
-    }
-    .footer-cols {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
-    }
-    .footer-col h5 {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a {
-      font-size: 14px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--white); }
+    .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.4); max-width: 280px; margin-top: 14px; }
+    .footer-col h5 { font-size: 13px; font-weight: 600; color: white; letter-spacing: 0.5px; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold-lt); }
     .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .footer-bottom p {
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .footer-bottom a { color: var(--gold); text-decoration: none; }
+    .footer-bottom p { font-size: 13px; }
 
-    /* ─── SCROLL ANIMATIONS ──────────────────────────*/
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* ─── RESPONSIVE ─────────────────────────────────*/
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2)::after { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-visual { height: 300px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .casaflow-card-grid { grid-template-columns: 1fr; }
-      .casaflow-right { border-left: none; border-top: 1px solid rgba(99,85,232,0.2); }
-      .footer-top { flex-direction: column; }
-      .footer-cols { grid-template-columns: 1fr 1fr; }
-    }
+    /* ─── SCROLL REVEAL ─────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
 
-<!-- 3D Canvas -->
-<canvas id="hero-canvas"></canvas>
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">CW</div>
+      <span class="nav-logo-text">Casa<span>Wealth</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#casaflow">CasaFlow</a></li>
+      <li><a href="#cta" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-mark">CW</div>
-    <div class="nav-logo-text">Casa<span>Wealth</span></div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#casaflow">CasaFlow</a></li>
-    <li><a href="#cta">Contact</a></li>
-    <li><a href="https://tenantflow.com.au" target="_blank" class="nav-cta">Try CasaFlow →</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-badge">Queensland Property Specialists</div>
-  <h1 class="hero-title">
-    Real Estate.<br>
-    <span class="gold">Reimagined.</span>
-  </h1>
-  <p class="hero-sub">CasaWealth brings deep property expertise and cutting-edge technology together — helping Queensland investors, agencies, and managers build lasting wealth.</p>
-  <div class="hero-btns">
-    <a href="#services" class="btn-gold">Explore Our Services</a>
-    <a href="#casaflow" class="btn-outline">Discover CasaFlow →</a>
-  </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section id="stats">
-  <div class="stats-grid">
-    <div class="stat-item reveal">
-      <div class="stat-num"><span class="count" data-target="850">0</span><span class="stat-suf">+</span></div>
-      <div class="stat-label">Properties Managed</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-1">
-      <div class="stat-num"><span class="count" data-target="12">0</span><span class="stat-suf">+</span></div>
-      <div class="stat-label">Years Experience</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-2">
-      <div class="stat-num"><span class="count" data-target="98">0</span><span class="stat-suf">%</span></div>
-      <div class="stat-label">Client Satisfaction</div>
-    </div>
-    <div class="stat-item reveal reveal-delay-3">
-      <div class="stat-num">$<span class="count" data-target="240">0</span><span class="stat-suf">M+</span></div>
-      <div class="stat-label">Assets Under Advice</div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-visual reveal">
-      <div class="about-card-3d main">
-        <div class="card-icon">🏛️</div>
-        <h4>Strategic Property Advice</h4>
-        <p>Bespoke investment strategies built around Queensland's unique market dynamics and growth corridors.</p>
-        <div class="card-metric">$240M+</div>
-      </div>
-      <div class="about-card-3d accent">
-        <div class="card-icon blue">⚡</div>
-        <h4>Powered by CasaFlow</h4>
-        <p>Our in-house PropTech platform automates the hard work.</p>
-        <div class="card-metric blue-text">AI-First</div>
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge">Queensland Property Specialists</div>
+      <h1 class="hero-title">
+        Real estate done<br><span class="gold">properly.</span>
+      </h1>
+      <p class="hero-sub">From property management and sales to investment strategy and PropTech — CasaWealth is the full-service partner for Queensland property owners.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-gold">Our Services</a>
+        <a href="#cta" class="btn-outline">Talk to Us</a>
       </div>
     </div>
-    <div class="about-content reveal reveal-delay-2">
-      <div class="section-label">Who We Are</div>
-      <h2 class="section-title">Built for Queensland Property</h2>
-      <p class="section-sub">CasaWealth is a Queensland-based real estate and property specialist firm. We combine decades of on-the-ground experience with proprietary technology to deliver outcomes that traditional agencies simply can't match.</p>
-      <div class="about-pillars">
-        <div class="pillar">
-          <div class="pillar-dot"></div>
-          <div>
-            <h5>Investment Strategy</h5>
-            <p>Data-driven portfolio advice across QLD growth markets.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-dot"></div>
-          <div>
-            <h5>Asset Management</h5>
-            <p>End-to-end management of residential and commercial assets.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-dot blue"></div>
-          <div>
-            <h5>PropTech Solutions</h5>
-            <p>CasaFlow — our AI-powered property management platform.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-dot blue"></div>
-          <div>
-            <h5>Development Advisory</h5>
-            <p>Feasibility, DA strategy and project delivery support.</p>
-          </div>
-        </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num"><span class="count" data-target="350">0</span><span class="stat-suf">+</span></div>
+        <div class="stat-label">Properties Managed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="count" data-target="12">0</span><span class="stat-suf">+</span></div>
+        <div class="stat-label">Years in Queensland</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="count" data-target="98">0</span><span class="stat-suf">%</span></div>
+        <div class="stat-label">Owner Retention Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="count" data-target="6">0</span></div>
+        <div class="stat-label">Service Streams</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="services-header">
-    <div class="section-label reveal">What We Do</div>
-    <h2 class="section-title reveal reveal-delay-1">Specialist Services</h2>
-    <p class="section-sub reveal reveal-delay-2">From investment strategy to AI-powered management — we cover every dimension of property.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-glow"></div>
-      <div class="service-num">01</div>
-      <span class="service-icon">📈</span>
-      <h3>Property Investment Strategy</h3>
-      <p>Evidence-based acquisition strategies targeting Queensland's highest-performing growth corridors. We identify, analyse and secure the right properties for long-term wealth creation.</p>
-      <a href="#cta" class="service-link">Learn more →</a>
-    </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-glow"></div>
-      <div class="service-num">02</div>
-      <span class="service-icon">🏢</span>
-      <h3>Asset &amp; Property Management</h3>
-      <p>Full-spectrum management of residential and commercial portfolios. Tenant placement, rent reviews, compliance, maintenance — all handled with precision and care.</p>
-      <a href="#cta" class="service-link">Learn more →</a>
-    </div>
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-glow"></div>
-      <div class="service-num">03</div>
-      <span class="service-icon">🏗️</span>
-      <h3>Development Advisory</h3>
-      <p>Expert guidance from feasibility through to completion. DA strategy, town planning liaison, construction oversight and project delivery for developers across Queensland.</p>
-      <a href="#cta" class="service-link">Learn more →</a>
-    </div>
-    <div class="service-card reveal reveal-delay-3">
-      <div class="service-glow"></div>
-      <div class="service-num">04</div>
-      <span class="service-icon">⚖️</span>
-      <h3>Compliance &amp; Risk Advisory</h3>
-      <p>Stay ahead of RTRA Act changes, smoke alarm legislation, minimum housing standards and body corporate obligations. We keep your portfolio compliant.</p>
-      <a href="#cta" class="service-link">Learn more →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-glow"></div>
-      <div class="service-num">05</div>
-      <span class="service-icon">💹</span>
-      <h3>Portfolio Optimisation</h3>
-      <p>Deep analysis of existing portfolios to identify underperforming assets, refinancing opportunities, and strategic additions. Turn a good portfolio into a great one.</p>
-      <a href="#cta" class="service-link">Learn more →</a>
-    </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-glow"></div>
-      <div class="service-num">06</div>
-      <span class="service-icon">🤖</span>
-      <h3>PropTech &amp; Automation</h3>
-      <p>Our CasaFlow platform brings AI-powered automation to property management — arrears handling, maintenance workflows, compliance tracking and real-time owner reporting.</p>
-      <a href="#casaflow" class="service-link">See CasaFlow →</a>
-    </div>
-  </div>
-</section>
-
-<!-- CASAFLOW -->
-<section id="casaflow">
-  <div class="casaflow-inner">
-    <div class="casaflow-top">
-      <div class="casaflow-badge reveal">
-        <div class="cf-dot"></div>
-        <span>Flagship Product</span>
-      </div>
-      <h2 class="section-title reveal reveal-delay-1" style="text-align:center">Meet CasaFlow</h2>
-      <p class="section-sub reveal reveal-delay-2" style="text-align:center;margin:0 auto">The AI-first property management platform built specifically for Queensland property managers. Less admin. More results.</p>
-    </div>
-    <div class="casaflow-main-card reveal">
-      <div class="casaflow-card-grid">
-        <div class="casaflow-left">
-          <div class="cf-logo">
-            <div class="cf-logo-mark">C</div>
-            <div class="cf-logo-name">Casa<span>Flow</span></div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-card-3d main">
+          <div class="card-icon">🏡</div>
+          <h4>Full-Service Property Management</h4>
+          <p>End-to-end management from tenant sourcing to maintenance, compliance and disbursements.</p>
+          <div class="card-metric">350+</div>
+          <div class="pill-row">
+            <span class="pill">Leasing</span>
+            <span class="pill">Compliance</span>
+            <span class="pill">Maintenance</span>
           </div>
-          <h3>Property management on autopilot — for Queensland PMs</h3>
-          <p>CasaFlow is the operational backbone for modern property management agencies. Built from the ground up for Queensland's unique regulatory environment — RTRA Act, smoke alarm compliance, minimum housing standards and beyond.</p>
-          <ul class="cf-features">
-            <li><div class="cf-check">✓</div> AI-powered rent arrears detection &amp; follow-up</li>
-            <li><div class="cf-check">✓</div> Automated maintenance workflows &amp; trade dispatch</li>
-            <li><div class="cf-check">✓</div> Compliance tracking (smoke alarms, QCAT notices)</li>
-            <li><div class="cf-check">✓</div> Owner &amp; tenant portals with real-time visibility</li>
-            <li><div class="cf-check">✓</div> Smart inspection scheduling &amp; reporting</li>
-            <li><div class="cf-check">✓</div> Integrated lease management &amp; renewals</li>
-          </ul>
-          <a href="https://tenantflow.com.au" target="_blank" class="btn-casaflow">
-            Get Early Access <span>→</span>
-          </a>
         </div>
-        <div class="casaflow-right">
-          <div class="cf-stat-row">
-            <div class="cf-stat">
-              <div class="num">80%</div>
-              <div class="lbl">Less admin time</div>
+        <div class="about-card-3d accent">
+          <div class="card-icon blue">⚡</div>
+          <h4>Powered by CasaFlow</h4>
+          <p>Our in-house PropTech keeps your property running smoothly 24/7.</p>
+          <div class="card-metric blue-text">Real-time</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Queensland property, handled from every angle.</h2>
+        <p class="section-sub">CasaWealth brings together deep local market knowledge and smart technology to deliver exceptional outcomes for property owners across Queensland.</p>
+        <ul class="check-list">
+          <li>Licensed Queensland real estate professionals</li>
+          <li>Fully transparent owner reporting and disbursements</li>
+          <li>Proactive compliance — smoke alarms, pool safety, gas & electrical</li>
+          <li>Dedicated VA support team handling the admin so you don't have to</li>
+          <li>Backed by CasaFlow, our proprietary property management platform</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Six reasons owners trust CasaWealth.</h2>
+        <p class="section-sub">Whether you're renting out one property or growing a portfolio, we have the expertise and the systems to manage it properly.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal" style="--accent-color: #B8922A;">
+          <div class="service-icon" style="background:#FEF3C7;">🏘️</div>
+          <h3>Property Management</h3>
+          <p>Full lifecycle management — tenant sourcing, routine inspections, maintenance coordination, arrears management, and transparent owner disbursements.</p>
+          <span class="service-tag" style="background:#FEF3C7;color:#92400E;">Core Service</span>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: #059669;">
+          <div class="service-icon" style="background:#D1FAE5;">🤝</div>
+          <h3>Sales & Acquisitions</h3>
+          <p>Strategic buying and selling across Queensland. Market appraisals, negotiation expertise, and investment-focused advice from licensed professionals.</p>
+          <span class="service-tag" style="background:#D1FAE5;color:#065F46;">Residential & Investment</span>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: #0891b2;">
+          <div class="service-icon" style="background:#E0F2FE;">📋</div>
+          <h3>Leasing & Tenancy</h3>
+          <p>From professional photography and listing to application processing, reference checks, onboarding and lease renewals — every step handled properly.</p>
+          <span class="service-tag" style="background:#E0F2FE;color:#0C4A6E;">End-to-End Leasing</span>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: #6355E8;">
+          <div class="service-icon" style="background:#EDE9FE;">📈</div>
+          <h3>Investment Strategy</h3>
+          <p>Portfolio growth planning, rent appraisals, bank valuations, and market trend reporting to help you make smarter property investment decisions.</p>
+          <span class="service-tag" style="background:#EDE9FE;color:#4338CA;">Portfolio Growth</span>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: #DC2626;">
+          <div class="service-icon" style="background:#FEE2E2;">🛡️</div>
+          <h3>Compliance & Risk</h3>
+          <p>Smoke alarm audits, pool safety certificates, gas, electrical and water compliance — tracked, actioned, and documented so you're never exposed.</p>
+          <span class="service-tag" style="background:#FEE2E2;color:#991B1B;">QLD Compliance</span>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: #0891b2;">
+          <div class="service-icon" style="background:linear-gradient(135deg,#E0F2FE,#EDE9FE);">⚡</div>
+          <h3>CasaFlow PropTech</h3>
+          <p>Our own property management platform, purpose-built for Queensland PMs. Automated workflows, real-time reporting, and VA-powered operations at scale.</p>
+          <a href="https://tenantflow.com.au" class="service-link" target="_blank">Explore CasaFlow →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CASAFLOW FEATURE STRIP -->
+  <section id="casaflow">
+    <div class="casaflow-grid section-inner">
+      <div class="casaflow-text reveal">
+        <div class="section-label">CasaFlow — Our PropTech</div>
+        <h2 class="section-title">The platform behind the performance.</h2>
+        <p class="section-sub">CasaFlow is CasaWealth's proprietary property management platform — built from the ground up to handle the workflows your VA, PM, and BDM run every day.</p>
+        <div class="feature-chips">
+          <span class="chip">Maintenance workflows</span>
+          <span class="chip">Lease renewal automation</span>
+          <span class="chip">Arrears tracking</span>
+          <span class="chip">Owner disbursements</span>
+          <span class="chip">Compliance audits</span>
+          <span class="chip">Routine inspections</span>
+          <span class="chip">Trust accounting</span>
+          <span class="chip">VA task management</span>
+        </div>
+        <a href="https://tenantflow.com.au" class="btn-gold" target="_blank" style="display:inline-block;">Learn More →</a>
+      </div>
+      <div class="casaflow-visual reveal">
+        <div class="cf-header">
+          <div class="cf-logo-mark">CF</div>
+          <div>
+            <h4>CasaFlow Dashboard</h4>
+            <span>Property Operations Overview</span>
+          </div>
+        </div>
+        <div class="cf-modules">
+          <div class="cf-module">
+            <div class="cf-module-left">
+              <div class="cf-module-dot" style="background:#34D399;"></div>
+              <span class="cf-module-name">Property Management</span>
             </div>
-            <div class="cf-stat">
-              <div class="num">3×</div>
-              <div class="lbl">Faster arrears resolution</div>
+            <span class="cf-badge live">Live</span>
+          </div>
+          <div class="cf-module">
+            <div class="cf-module-left">
+              <div class="cf-module-dot" style="background:#34D399;"></div>
+              <span class="cf-module-name">Maintenance & Compliance</span>
             </div>
+            <span class="cf-badge live">Live</span>
           </div>
-          <div class="cf-feature-card">
-            <h4><span class="icon">🧠</span> AI Arrears Manager</h4>
-            <p>Detects missed payments the moment they occur. Sends personalised, escalating follow-ups automatically — no manual chasing required.</p>
+          <div class="cf-module">
+            <div class="cf-module-left">
+              <div class="cf-module-dot" style="background:#38BDF8;"></div>
+              <span class="cf-module-name">Lease Renewals</span>
+            </div>
+            <span class="cf-badge beta">Beta</span>
           </div>
-          <div class="cf-feature-card">
-            <h4><span class="icon">🔧</span> Smart Maintenance Hub</h4>
-            <p>Tenants log jobs via the portal. CasaFlow triages urgency, notifies approved trades, and keeps owners updated in real time.</p>
+          <div class="cf-module">
+            <div class="cf-module-left">
+              <div class="cf-module-dot" style="background:#38BDF8;"></div>
+              <span class="cf-module-name">Trust Accounting</span>
+            </div>
+            <span class="cf-badge beta">Beta</span>
           </div>
-          <div class="cf-feature-card">
-            <h4><span class="icon">📋</span> Compliance Engine</h4>
-            <p>Tracks smoke alarm service dates, entry notices, QCAT deadlines and minimum housing standards — nothing falls through the cracks.</p>
+          <div class="cf-module">
+            <div class="cf-module-left">
+              <div class="cf-module-dot" style="background:rgba(255,255,255,0.25);"></div>
+              <span class="cf-module-name">Owner Portal</span>
+            </div>
+            <span class="cf-badge soon">Soon</span>
           </div>
-          <div class="cf-feature-card">
-            <h4><span class="icon">📊</span> Owner Dashboard</h4>
-            <p>Landlords see live financials, inspection reports and upcoming lease events — fewer phone calls, happier clients.</p>
+          <div class="cf-module">
+            <div class="cf-module-left">
+              <div class="cf-module-dot" style="background:rgba(255,255,255,0.25);"></div>
+              <span class="cf-module-name">Tenant Portal</span>
+            </div>
+            <span class="cf-badge soon">Soon</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="section-inner">
-    <div class="section-label reveal" style="text-align:center">Get In Touch</div>
-    <h2 class="section-title reveal reveal-delay-1" style="text-align:center">Ready to build<br>lasting property wealth?</h2>
-    <p class="section-sub reveal reveal-delay-2">Whether you're an investor, agency or developer — our team is ready to help. Or jump straight into CasaFlow and transform your property management operation.</p>
-    <div class="cta-btns reveal reveal-delay-3">
-      <a href="mailto:hello@casawealth.com.au" class="btn-gold">Contact CasaWealth</a>
-      <a href="https://tenantflow.com.au" target="_blank" class="btn-casaflow">Try CasaFlow Free →</a>
+  <!-- CTA -->
+  <section id="cta">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label" style="text-align:center;">Get Started</div>
+        <h2 class="section-title" style="text-align:center;">Ready to manage your property properly?</h2>
+        <p class="section-sub" style="text-align:center;margin:0 auto 44px;">Whether you're an investor looking for a better manager, or an owner wanting more from your property — let's have a conversation.</p>
+        <div class="cta-btns">
+          <a href="mailto:hello@casawealth.com.au" class="btn-primary">Get in Touch</a>
+          <a href="https://tenantflow.com.au" class="btn-outline" target="_blank">Explore CasaFlow</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="nav-logo" style="display:inline-flex">
+        <div class="nav-logo" style="margin-bottom:0;">
           <div class="nav-logo-mark">CW</div>
-          <div class="nav-logo-text">Casa<span>Wealth</span></div>
-        </a>
-        <p>Queensland's real estate and property specialist company. Helping investors, agencies and developers build lasting wealth.</p>
+          <span class="nav-logo-text" style="color:white;">Casa<span style="color:var(--gold-lt)">Wealth</span></span>
+        </div>
+        <p>Queensland's full-service property specialists. Smart management, strategic investment, and purpose-built PropTech.</p>
       </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h5>Company</h5>
-          <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#casaflow">CasaFlow</a></li>
-            <li><a href="#cta">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Services</h5>
-          <ul>
-            <li><a href="#services">Investment Strategy</a></li>
-            <li><a href="#services">Asset Management</a></li>
-            <li><a href="#services">Development Advisory</a></li>
-            <li><a href="#services">Compliance Advisory</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Products</h5>
-          <ul>
-            <li><a href="https://tenantflow.com.au" target="_blank">CasaFlow Platform</a></li>
-            <li><a href="https://tenantflow.com.au" target="_blank">Early Access</a></li>
-            <li><a href="https://tenantflow.com.au#features" target="_blank">Features</a></li>
-            <li><a href="https://tenantflow.com.au#demo" target="_blank">Live Demo</a></li>
-          </ul>
-        </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="#services">Property Management</a>
+        <a href="#services">Sales & Acquisitions</a>
+        <a href="#services">Leasing & Tenancy</a>
+        <a href="#services">Investment Strategy</a>
+        <a href="#services">Compliance & Risk</a>
+      </div>
+      <div class="footer-col">
+        <h5>CasaFlow</h5>
+        <a href="https://tenantflow.com.au" target="_blank">Platform Overview</a>
+        <a href="https://tenantflow.com.au" target="_blank">Features</a>
+        <a href="https://tenantflow.com.au" target="_blank">Request Access</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#about">About Us</a>
+        <a href="mailto:hello@casawealth.com.au">Contact</a>
+        <a href="#">Privacy Policy</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 CasaWealth Pty Ltd · Queensland, Australia · <a href="mailto:hello@casawealth.com.au">hello@casawealth.com.au</a></p>
-      <p style="font-size:12px;color:#3a4157">ABN: TBC &nbsp;·&nbsp; Built in Brisbane</p>
+      <p>© 2026 CasaWealth Pty Ltd. All rights reserved. Licensed Real Estate Agent — Queensland.</p>
+      <p>Built with <a href="https://tenantflow.com.au" style="color:var(--gold-lt);text-decoration:none;">CasaFlow</a></p>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- THREE.JS 3D SCENE -->
-<script>
-(function() {
-  const canvas = document.getElementById('hero-canvas');
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 500);
-  camera.position.set(0, 18, 42);
-  camera.lookAt(0, 0, 0);
-
-  // Fog
-  scene.fog = new THREE.FogExp2(0x05081A, 0.018);
-
-  // Grid floor
-  const gridHelper = new THREE.GridHelper(80, 40, 0x1a2654, 0x0e163a);
-  gridHelper.position.y = 0;
-  scene.add(gridHelper);
-
-  // Building geometry helper
-  function makeBuilding(w, h, d, color, opacity) {
-    const geo = new THREE.BoxGeometry(w, h, d);
-    const edges = new THREE.EdgesGeometry(geo);
-    const mat = new THREE.LineBasicMaterial({
-      color: color,
-      transparent: true,
-      opacity: opacity
+  <script>
+    // ── NAV SCROLL ──────────────────────────────────────
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
     });
-    const mesh = new THREE.LineSegments(edges, mat);
-    return mesh;
-  }
 
-  // City grid of buildings
-  const buildings = [];
-  const GOLD = 0xC9A84C;
-  const CYAN = 0x0891b2;
-  const PURPLE = 0x6355E8;
+    // ── THREE.JS SCENE ─────────────────────────────────
+    const canvas = document.getElementById('hero-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
 
-  const cityLayout = [];
-  for (let x = -30; x <= 30; x += 5) {
-    for (let z = -30; z <= 30; z += 5) {
-      // Skip center for clear hero area
-      const distFromCenter = Math.sqrt(x*x + z*z);
-      if (distFromCenter < 8) continue;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 200);
+    camera.position.set(0, 12, 40);
 
-      const roll = Math.random();
-      if (roll < 0.35) continue; // sparse
+    // Soft light palette for bright theme
+    const GOLD_C  = 0xD4A94A;
+    const STEEL   = 0x8899BB;
+    const SKY     = 0x6BAED6;
+    const SOFT    = 0xCCDDEE;
 
-      const h = Math.random() * 10 + 1.5;
-      const w = Math.random() * 1.8 + 0.8;
-      const d = Math.random() * 1.8 + 0.8;
-      const jx = (Math.random() - 0.5) * 2;
-      const jz = (Math.random() - 0.5) * 2;
+    // Buildings — lighter wireframe
+    const buildingGroup = new THREE.Group();
+    const buildingData = [
+      [-16, 0, -8, 2.5, 14, 2.5], [-11, 0, -6, 2, 10, 2], [-6, 0, -10, 3, 18, 3],
+      [0, 0, -12, 3.5, 22, 3.5], [7, 0, -8, 2.5, 16, 2.5], [13, 0, -10, 2, 12, 2],
+      [18, 0, -7, 3, 9, 3], [-20, 0, -4, 2, 7, 2], [22, 0, -5, 2, 8, 2],
+      [-4, 0, -6, 2, 11, 2], [4, 0, -6, 2, 13, 2], [-14, 0, -3, 1.5, 6, 1.5],
+    ];
+    buildingData.forEach(([x, y, z, w, h, d]) => {
+      const geo = new THREE.BoxGeometry(w, h, d);
+      const mat = new THREE.MeshBasicMaterial({ color: STEEL, wireframe: true, transparent: true, opacity: 0.18 });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(x, y + h / 2 - 8, z);
+      buildingGroup.add(mesh);
 
-      // Color by distance: close = gold, far = cyan/purple
-      let color = GOLD;
-      if (distFromCenter > 20) color = roll > 0.5 ? CYAN : PURPLE;
-      else if (distFromCenter > 14) color = roll > 0.7 ? CYAN : GOLD;
+      // Solid face with very low opacity
+      const solidMat = new THREE.MeshBasicMaterial({ color: 0xE8EEF8, transparent: true, opacity: 0.12 });
+      const solid = new THREE.Mesh(geo, solidMat);
+      solid.position.copy(mesh.position);
+      buildingGroup.add(solid);
+    });
+    scene.add(buildingGroup);
 
-      const opacity = 0.35 + Math.random() * 0.45;
-      cityLayout.push({ x: x + jx, z: z + jz, h, w, d, color, opacity });
+    // Ground grid
+    const gridHelper = new THREE.GridHelper(100, 30, 0xCCDDEE, 0xCCDDEE);
+    gridHelper.material.transparent = true;
+    gridHelper.material.opacity = 0.12;
+    gridHelper.position.y = -8;
+    scene.add(gridHelper);
+
+    // Gold particles
+    const particleCount = 400;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3]     = (Math.random() - 0.5) * 80;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
     }
-  }
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const pMat = new THREE.PointsMaterial({ color: GOLD_C, size: 0.18, transparent: true, opacity: 0.55 });
+    scene.add(new THREE.Points(pGeo, pMat));
 
-  cityLayout.forEach(cfg => {
-    const b = makeBuilding(cfg.w, cfg.h, cfg.d, cfg.color, cfg.opacity);
-    b.position.set(cfg.x, -cfg.h/2 - 12, cfg.z); // start underground
-    b.userData.targetY = cfg.h / 2;
-    b.userData.speed = 0.04 + Math.random() * 0.06;
-    b.userData.delay = Math.random() * 60; // frames delay
-    b.userData.delayCount = 0;
-    scene.add(b);
-    buildings.push(b);
-  });
+    // Floating ring
+    const ringGeo = new THREE.TorusGeometry(12, 0.06, 16, 100);
+    const ringMat = new THREE.MeshBasicMaterial({ color: GOLD_C, transparent: true, opacity: 0.25 });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI / 2.5;
+    scene.add(ring);
 
-  // Particles (stars / dust)
-  const particleCount = 600;
-  const pPositions = new Float32Array(particleCount * 3);
-  const pSizes = new Float32Array(particleCount);
-  for (let i = 0; i < particleCount; i++) {
-    pPositions[i*3]   = (Math.random() - 0.5) * 120;
-    pPositions[i*3+1] = Math.random() * 40 + 2;
-    pPositions[i*3+2] = (Math.random() - 0.5) * 120;
-    pSizes[i] = Math.random() * 0.6 + 0.1;
-  }
-  const pGeo = new THREE.BufferGeometry();
-  pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
-  const pMat = new THREE.PointsMaterial({
-    color: 0xC9A84C,
-    size: 0.18,
-    transparent: true,
-    opacity: 0.5
-  });
-  const particles = new THREE.Points(pGeo, pMat);
-  scene.add(particles);
+    // Second ring (sky blue)
+    const ring2Geo = new THREE.TorusGeometry(18, 0.04, 16, 100);
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: SKY, transparent: true, opacity: 0.15 });
+    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2.rotation.x = Math.PI / 3;
+    ring2.rotation.z = Math.PI / 6;
+    scene.add(ring2);
 
-  // Floating rings
-  function makeRing(radius, tube, color, opacity) {
-    const geo = new THREE.TorusGeometry(radius, tube, 4, 32);
-    const edges = new THREE.EdgesGeometry(geo);
-    const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
-    return new THREE.LineSegments(edges, mat);
-  }
-  const ring1 = makeRing(6, 0.06, GOLD, 0.3);
-  ring1.position.set(-8, 8, -10);
-  ring1.rotation.x = Math.PI / 3;
-  scene.add(ring1);
-
-  const ring2 = makeRing(4, 0.05, CYAN, 0.25);
-  ring2.position.set(10, 6, -8);
-  ring2.rotation.z = Math.PI / 4;
-  scene.add(ring2);
-
-  // Ambient light
-  scene.add(new THREE.AmbientLight(0xffffff, 0.2));
-
-  // Mouse parallax
-  let targetMX = 0, targetMY = 0, curMX = 0, curMY = 0;
-  let isHeroVisible = true;
-  document.addEventListener('mousemove', e => {
-    targetMX = (e.clientX / window.innerWidth - 0.5) * 2;
-    targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
-  window.addEventListener('scroll', () => {
-    isHeroVisible = window.scrollY < window.innerHeight * 0.8;
-  });
-
-  let frame = 0;
-  let t = 0;
-
-  function animate() {
-    requestAnimationFrame(animate);
-    frame++;
-    t += 0.003;
-
-    // Smooth mouse follow
-    curMX += (targetMX - curMX) * 0.05;
-    curMY += (targetMY - curMY) * 0.05;
-
-    // Animate buildings rising
-    buildings.forEach(b => {
-      if (b.userData.delayCount < b.userData.delay) {
-        b.userData.delayCount++;
-        return;
-      }
-      if (b.position.y < b.userData.targetY) {
-        b.position.y += b.userData.speed;
-      }
+    // Mouse parallax
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     });
 
-    // Camera slow orbit + mouse parallax
-    const baseX = Math.sin(t * 0.4) * 6;
-    const baseZ = 42 + Math.cos(t * 0.3) * 4;
-    camera.position.x = baseX + curMX * 5;
-    camera.position.z = baseZ + curMY * 3;
-    camera.position.y = 18 - curMY * 2;
-    camera.lookAt(0, 2, 0);
+    let t = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      t += 0.006;
+      buildingGroup.rotation.y = mouseX * 0.06 + Math.sin(t * 0.3) * 0.02;
+      camera.position.x += (mouseX * 3 - camera.position.x) * 0.04;
+      camera.position.y += (-mouseY * 2 + 12 - camera.position.y) * 0.04;
+      camera.lookAt(0, 0, 0);
+      ring.rotation.z = t * 0.15;
+      ring2.rotation.z = -t * 0.1;
+      renderer.render(scene, camera);
+    }
+    animate();
 
-    // Rotate particles slowly
-    particles.rotation.y += 0.0004;
-    particles.rotation.x += 0.0001;
+    window.addEventListener('resize', () => {
+      const w = canvas.parentElement.offsetWidth;
+      const h = canvas.parentElement.offsetHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
 
-    // Animate rings
-    ring1.rotation.y += 0.008;
-    ring1.rotation.x += 0.003;
-    ring2.rotation.z += 0.005;
-    ring2.rotation.y -= 0.006;
-
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-})();
-</script>
-
-<!-- NAV SCROLL EFFECT -->
-<script>
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
-});
-</script>
-
-<!-- SCROLL REVEAL -->
-<script>
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-</script>
-
-<!-- COUNTER ANIMATION -->
-<script>
-function animateCount(el, target, duration) {
-  let start = 0;
-  const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const progress = Math.min((timestamp - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target;
-  };
-  requestAnimationFrame(step);
-}
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const el = e.target;
+    // ── COUNTER ANIMATION ──────────────────────────────
+    function animateCount(el) {
       const target = parseInt(el.dataset.target);
-      animateCount(el, target, 1800);
-      counterObserver.unobserve(el);
+      const duration = 2000;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
     }
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('.count').forEach(el => counterObserver.observe(el));
-</script>
+    const statsObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.count').forEach(animateCount);
+          statsObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    statsObs.observe(document.getElementById('stats'));
 
+    // ── SCROLL REVEAL ──────────────────────────────────
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  </script>
 </body>
 </html>
