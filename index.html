@@ -401,95 +401,6 @@
     }
     .service-link:hover { gap: 10px; }
 
-    /* CasaFlow featured card */
-    .service-card.featured {
-      background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);
-      border-color: rgba(99,85,232,0.18);
-    }
-    .service-card.featured::after {
-      content: 'Our Technology';
-      position: absolute;
-      top: 20px; right: 20px;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.8px; text-transform: uppercase;
-      color: var(--purple);
-      background: rgba(99,85,232,0.1);
-      padding: 4px 10px; border-radius: 20px;
-      border: 1px solid rgba(99,85,232,0.15);
-    }
-    .service-card.featured:hover {
-      box-shadow: 0 24px 64px rgba(99,85,232,0.15);
-    }
-
-    /* ─── CASAFLOW FEATURE STRIP ────────────────────── */
-    #casaflow {
-      padding: 100px 40px;
-      background: var(--navy);
-      position: relative;
-      overflow: hidden;
-    }
-    #casaflow::before {
-      content: '';
-      position: absolute;
-      top: -200px; right: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(99,85,232,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .casaflow-grid {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-    .casaflow-text .section-label { color: var(--gold-lt); }
-    .casaflow-text .section-title { color: white; }
-    .casaflow-text .section-sub { color: rgba(255,255,255,0.55); margin-bottom: 36px; }
-    .feature-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
-    .chip {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.75);
-      font-size: 12px; font-weight: 500;
-      padding: 7px 14px; border-radius: 20px;
-    }
-    .casaflow-visual {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 32px;
-      backdrop-filter: blur(10px);
-    }
-    .cf-header {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 24px; padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .cf-logo-mark {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 14px; color: white;
-    }
-    .cf-header h4 { font-size: 16px; font-weight: 700; color: white; }
-    .cf-header span { font-size: 12px; color: rgba(255,255,255,0.4); }
-    .cf-modules { display: flex; flex-direction: column; gap: 12px; }
-    .cf-module {
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255,255,255,0.05);
-      border-radius: 12px; padding: 14px 16px;
-    }
-    .cf-module-left { display: flex; align-items: center; gap: 12px; }
-    .cf-module-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .cf-module-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
-    .cf-module-stat { font-size: 12px; color: rgba(255,255,255,0.35); }
-    .cf-badge {
-      font-size: 10px; font-weight: 700;
-      padding: 3px 9px; border-radius: 20px;
-      letter-spacing: 0.5px; text-transform: uppercase;
-    }
-    .cf-badge.live { background: rgba(5,150,105,0.2); color: #34D399; }
-    .cf-badge.beta { background: rgba(8,145,178,0.2); color: #38BDF8; }
-    .cf-badge.soon { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.35); }
 
     /* ─── CTA ───────────────────────────────────────── */
     #cta {
@@ -509,7 +420,7 @@
     }
     .footer-inner {
       max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
       gap: 60px; margin-bottom: 48px;
     }
     .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.4); max-width: 280px; margin-top: 14px; }
@@ -539,7 +450,6 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#casaflow" style="color:var(--purple);font-weight:600;">CasaFlow ↗</a></li>
       <li><a href="#cta" class="nav-cta">Get in Touch</a></li>
     </ul>
   </nav>
@@ -601,12 +511,6 @@
             <span class="pill">Maintenance</span>
           </div>
         </div>
-        <div class="about-card-3d accent">
-          <div class="card-icon blue">⚡</div>
-          <h4>Powered by CasaFlow</h4>
-          <p>Our in-house PropTech keeps your property running smoothly 24/7.</p>
-          <div class="card-metric blue-text">Real-time</div>
-        </div>
       </div>
       <div class="about-text reveal">
         <div class="section-label">Who We Are</div>
@@ -617,7 +521,6 @@
           <li>Fully transparent owner reporting and disbursements</li>
           <li>Proactive compliance — smoke alarms, pool safety, gas & electrical</li>
           <li>Dedicated VA support team handling the admin so you don't have to</li>
-          <li>Backed by CasaFlow, our proprietary property management platform</li>
         </ul>
       </div>
     </div>
@@ -668,88 +571,6 @@
           <span class="service-tag" style="background:#FEE2E2;color:#991B1B;">QLD Compliance</span>
         </div>
 
-        <div class="service-card featured reveal" style="--accent-color: #6355E8;">
-          <div class="service-icon" style="background:linear-gradient(135deg,#EDE9FE,#E0F2FE);">⚡</div>
-          <h3>CasaFlow PropTech</h3>
-          <p>Our proprietary platform powering every service above. Automated workflows, real-time reporting, compliance tracking, and VA-powered operations — built specifically for Queensland property management.</p>
-          <a href="https://www.tenantflow.com.au" class="service-link" target="_blank">Explore CasaFlow →</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CASAFLOW FEATURE STRIP -->
-  <section id="casaflow">
-    <div class="casaflow-grid section-inner">
-      <div class="casaflow-text reveal">
-        <div class="section-label">CasaFlow — Our PropTech</div>
-        <h2 class="section-title">The platform behind the performance.</h2>
-        <p class="section-sub">CasaFlow is CasaWealth's proprietary property management platform — built from the ground up to handle the workflows your VA, PM, and BDM run every day.</p>
-        <div class="feature-chips">
-          <span class="chip">Maintenance workflows</span>
-          <span class="chip">Lease renewal automation</span>
-          <span class="chip">Arrears tracking</span>
-          <span class="chip">Owner disbursements</span>
-          <span class="chip">Compliance audits</span>
-          <span class="chip">Routine inspections</span>
-          <span class="chip">Trust accounting</span>
-          <span class="chip">VA task management</span>
-        </div>
-        <a href="https://www.tenantflow.com.au" class="btn-gold" target="_blank" style="display:inline-block;">Learn More →</a>
-      </div>
-      <div class="casaflow-visual reveal">
-        <div class="cf-header">
-          <div class="cf-logo-mark">CF</div>
-          <div>
-            <h4>CasaFlow Dashboard</h4>
-            <span>Property Operations Overview</span>
-          </div>
-        </div>
-        <div class="cf-modules">
-          <div class="cf-module">
-            <div class="cf-module-left">
-              <div class="cf-module-dot" style="background:#34D399;"></div>
-              <span class="cf-module-name">Property Management</span>
-            </div>
-            <span class="cf-badge live">Live</span>
-          </div>
-          <div class="cf-module">
-            <div class="cf-module-left">
-              <div class="cf-module-dot" style="background:#34D399;"></div>
-              <span class="cf-module-name">Maintenance & Compliance</span>
-            </div>
-            <span class="cf-badge live">Live</span>
-          </div>
-          <div class="cf-module">
-            <div class="cf-module-left">
-              <div class="cf-module-dot" style="background:#38BDF8;"></div>
-              <span class="cf-module-name">Lease Renewals</span>
-            </div>
-            <span class="cf-badge beta">Beta</span>
-          </div>
-          <div class="cf-module">
-            <div class="cf-module-left">
-              <div class="cf-module-dot" style="background:#38BDF8;"></div>
-              <span class="cf-module-name">Trust Accounting</span>
-            </div>
-            <span class="cf-badge beta">Beta</span>
-          </div>
-          <div class="cf-module">
-            <div class="cf-module-left">
-              <div class="cf-module-dot" style="background:rgba(255,255,255,0.25);"></div>
-              <span class="cf-module-name">Owner Portal</span>
-            </div>
-            <span class="cf-badge soon">Soon</span>
-          </div>
-          <div class="cf-module">
-            <div class="cf-module-left">
-              <div class="cf-module-dot" style="background:rgba(255,255,255,0.25);"></div>
-              <span class="cf-module-name">Tenant Portal</span>
-            </div>
-            <span class="cf-badge soon">Soon</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -763,7 +584,6 @@
         <p class="section-sub" style="text-align:center;margin:0 auto 44px;">Whether you're an investor looking for a better manager, or an owner wanting more from your property — let's have a conversation.</p>
         <div class="cta-btns">
           <a href="mailto:hello@casawealth.com.au" class="btn-primary">Get in Touch</a>
-          <a href="https://www.tenantflow.com.au" class="btn-outline" target="_blank">Explore CasaFlow</a>
         </div>
       </div>
     </div>
@@ -788,12 +608,6 @@
         <a href="#services">Compliance & Risk</a>
       </div>
       <div class="footer-col">
-        <h5>CasaFlow</h5>
-        <a href="https://www.tenantflow.com.au" target="_blank">Platform Overview</a>
-        <a href="https://www.tenantflow.com.au" target="_blank">Features</a>
-        <a href="https://www.tenantflow.com.au" target="_blank">Request Access</a>
-      </div>
-      <div class="footer-col">
         <h5>Company</h5>
         <a href="#about">About Us</a>
         <a href="mailto:hello@casawealth.com.au">Contact</a>
@@ -802,7 +616,6 @@
     </div>
     <div class="footer-bottom">
       <p>© 2026 CasaWealth Pty Ltd. All rights reserved. Licensed Real Estate Agent — Queensland.</p>
-      <p>Built with <a href="https://www.tenantflow.com.au" style="color:var(--gold-lt);text-decoration:none;">CasaFlow</a></p>
     </div>
   </footer>
 
